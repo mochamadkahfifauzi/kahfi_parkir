@@ -1,0 +1,5 @@
+<h1>Rekap Transaksi</h1>
+<div class="panel"><form method="get" class="grid-form"><input type="hidden" name="page" value="report"><label>Dari<input type="date" name="start" value="<?= htmlspecialchars($data['start']) ?>"></label><label>Sampai<input type="date" name="end" value="<?= htmlspecialchars($data['end']) ?>"></label><button class="btn primary">Tampilkan</button></form></div>
+<div class="panel total"><b>Total Pendapatan</b><strong>Rp <?= number_format($data['total'],0,',','.') ?></strong></div>
+<div class="table-wrap"><table><thead><tr><th>ID</th><th>Plat</th><th>Jenis</th><th>Masuk</th><th>Keluar</th><th>Durasi</th><th>Total</th></tr></thead><tbody>
+<?php foreach ($data['items'] as $r): ?><tr><td><?= $r['id_transaksi'] ?></td><td><?= htmlspecialchars($r['no_polisi']) ?></td><td><?= htmlspecialchars($r['jenis_kendaraan']) ?></td><td><?= $r['waktu_masuk'] ?></td><td><?= $r['waktu_keluar'] ?></td><td><?= $r['durasi_jam'] ?> jam</td><td>Rp <?= number_format($r['total_bayar'],0,',','.') ?></td></tr><?php endforeach; ?></tbody></table></div>

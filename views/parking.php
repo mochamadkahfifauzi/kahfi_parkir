@@ -1,0 +1,4 @@
+<h1>Transaksi Parkir</h1>
+<div class="panel"><h3>Kendaraan Masuk</h3><form method="post" action="index.php?action=park" class="grid-form"><label>No Polisi<input name="no_polisi" placeholder="Contoh: B 1234 ABC" required autofocus></label><button class="btn primary">Catat Masuk</button></form></div>
+<div class="table-wrap"><table><thead><tr><th>ID</th><th>Plat</th><th>Jenis</th><th>Masuk</th><th>Petugas</th><th>Aksi</th></tr></thead><tbody>
+<?php foreach ($data['items'] as $r): ?><tr><td><?= $r['id_transaksi'] ?></td><td><?= htmlspecialchars($r['no_polisi']) ?></td><td><?= htmlspecialchars($r['jenis_kendaraan']) ?></td><td><?= htmlspecialchars($r['waktu_masuk']) ?></td><td><?= htmlspecialchars($r['nama_petugas']) ?></td><td><form method="post" action="index.php?action=finish"><input type="hidden" name="id_transaksi" value="<?= $r['id_transaksi'] ?>"><button class="btn primary small">Keluar & Struk</button></form></td></tr><?php endforeach; ?></tbody></table></div>
