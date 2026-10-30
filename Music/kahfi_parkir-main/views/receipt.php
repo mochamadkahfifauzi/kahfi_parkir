@@ -1,0 +1,6 @@
+<h1>Struk Parkir</h1>
+<?php $r = $data['receipt']; if (!$r): ?><div class="panel">Belum ada struk.</div><?php else: ?>
+<?php $minutes = (int)($r['durasi_menit'] ?? 0); $durationText = $minutes < 60 ? $minutes . ' menit' : (int)floor($minutes / 60) . ' jam' . (($minutes % 60) > 0 ? ' ' . ($minutes % 60) . ' menit' : ''); ?>
+<div class="receipt" id="printArea"><h2>STRUK PARKIR</h2><p><b>No. Transaksi:</b> <?= (int)$r['id_transaksi'] ?></p><p><b>No. Polisi:</b> <?= htmlspecialchars($r['no_polisi']) ?></p><p><b>Jenis:</b> <?= htmlspecialchars($r['jenis_kendaraan']) ?></p><p><b>Area:</b> <?= htmlspecialchars($r['nama_area']) ?></p><hr><p>Masuk: <?= htmlspecialchars($r['waktu_masuk']) ?></p><p>Keluar: <?= htmlspecialchars($r['waktu_keluar']) ?></p><p>Durasi aktual: <?= htmlspecialchars($durationText) ?></p><p>Jam yang ditagihkan: <?= (int)$r['durasi_jam'] ?> jam</p><p>Tarif/jam: Rp <?= number_format($r['tarif_per_jam'],0,',','.') ?></p><h2>Total: Rp <?= number_format($r['total_bayar'],0,',','.') ?></h2><p>Petugas: <?= htmlspecialchars($r['nama_petugas']) ?></p></div>
+<button class="btn primary" onclick="window.print()">Cetak</button> <a class="btn" href="index.php?page=parking">Kembali</a>
+<?php endif; ?>
